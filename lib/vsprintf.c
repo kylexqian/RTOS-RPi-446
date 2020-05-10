@@ -22,7 +22,7 @@
  */
 
 #ifdef KYU
-#include <stdarg.h>
+#include "stdarg.h"
 #include "ctype.h"
 #include "linux_headers.h"
 #include "bitops.h"

@@ -8,7 +8,7 @@
 #VERSION = 0.7.5
 # now get version number from file VERSION
 
-INCS = -I. -Iarm
+INCS = -I. -Iarm -I/usr/local/oecore-x86_64/sysroots/x86_64-oesdk-linux/usr/lib/arm-oe-linux-gnueabi/gcc/arm-oe-linux-gnueabi/7.3.0/include
 
 include Makefile.inc
 
@@ -89,9 +89,12 @@ version.c:	FORCE
 #	$(MAKE) -C $@
 
 install: kyu.bin kyu.sym
-	cp kyu.bin /var/lib/tftpboot/orange.bin
-	cp kyu.sym /var/lib/tftpboot/kyu.sym
-	ls -l /var/lib/tftpboot/kyu.sym
+	#cp kyu.bin /var/lib/tftpboot/orange.bin
+	cp kyu.bin ~/TFTP/orange.bin
+	#cp kyu.sym /var/lib/tftpboot/kyu.sym
+	cp kyu.sym ~/TFTP/kyu.sym
+	#ls -l /var/lib/tftpboot/kyu.sym
+	ls -l ~/TFTP/kyu.sym
 
 kyu.dump:	kyu
 	$(DUMP) kyu >kyu.dump

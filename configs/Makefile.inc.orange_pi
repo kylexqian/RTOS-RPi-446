@@ -4,7 +4,8 @@
 #
 # Tom Trebisky  5-18-2015  12-12-2016
 
-CCX = arm-linux-gnu-gcc
+#CCX = arm-linux-gnu-gcc
+CCX = arm-linux-gnueabi-gcc
 
 # For a long time it was an issue to keep stdarg.h in sync
 #  with the compiler.  Then I realized it was best to just let
@@ -30,7 +31,8 @@ GCCVERSION = `$(CCX) -dumpversion`
 
 #ABI = -isystem /usr/lib/gcc/arm-linux-gnueabi/4.9.2/include
 #ABI = -isystem /usr/lib/gcc/arm-linux-gnueabi/5.1.1/include
-ABI = -isystem /usr/lib/gcc/arm-linux-gnueabi/$(GCCVERSION)/include
+#ABI = -isystem /usr/lib/gcc/arm-linux-gnueabi/$(GCCVERSION)/include
+ABI = -isystem /usr/lib/gcc/arm-none-eabi/7.3.1/include
 
 # IMPORTANT --
 # I have tried several times to use the gcc builtin functions
@@ -73,20 +75,23 @@ OPT = -fno-omit-frame-pointer
 #COPTS = -DKYU -nostdinc $(NOB) $(OPT) -marm -march=armv7-a -msoft-float $(INCS) $(ABI) $(DEFS)
 COPTS = -DKYU -nostdinc $(NOB) $(OPT) -marm -mcpu=cortex-a7 -mfpu=vfpv4 $(INCS) $(ABI) $(DEFS)
 
-CC = $(CCX) $(COPTS)
+CC = $(CCX) $(COPTS) -nostdlib
 
 # It is a bug that we cannot invoke gcc to do this,
 # but doing this directly gets the job done.
-LD = arm-linux-gnu-ld.bfd
+#LD = arm-linux-gnu-ld.bfd
+LD = arm-linux-gnueabi-ld.bfd
 
 # Should we get this via linux arch/arm/asm/lib ??
 # for LINUX comment this out -----
 #LIBS = -L /usr/lib/gcc/arm-linux-gnueabi/5.1.1 -lgcc
-LIBS = -L /usr/lib/gcc/arm-linux-gnueabi/$(GCCVERSION) -lgcc
+#LIBS = -L /usr/lib/gcc/arm-linux-gnueabi/$(GCCVERSION) -lgcc
+LIBS = -L /usr/lib/gcc/arm-none-eabi/7.3.1/ -lgcc
 
-BIN = arm-linux-gnu-objcopy -O binary
-DUMP = arm-linux-gnu-objdump -d
-NM = arm-linux-gnu-nm
+#BIN = arm-linux-gnu-objcopy -O binary
+BIN = arm-linux-gnueabi-objcopy -O binary
+DUMP = arm-linux-gnueabi-objdump -d
+NM = arm-linux-gnueabi-nm
 
 .c.o:
 	$(CC) -o $@ -c $<
