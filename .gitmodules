@@ -1,0 +1,3 @@
+[submodule "rtos_lib"]
+	path = rtos_lib
+	url = https://git.sr.ht/~roselandgoose/kyu
