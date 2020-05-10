@@ -22,4 +22,5 @@ kyu image it downloads.
 ## Dependencies
 ```ini
 gcc="Host compiler"
+bison="Parser generator"
 ```
