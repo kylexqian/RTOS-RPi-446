@@ -21,8 +21,9 @@ kyu image it downloads.
 
 ## Dependencies
 ```ini
-gcc="Host compiler"
-bison="Parser generator"
-flex="Scanner generator"
-swig="Plumbing for connecting high-level languages to C"
+gcc=''      # Host compiler
+bison=''    # Parser generator
+flex=''     # Scanner generator
+swig=''     # Plumbing for connecting high-level languages to C
+arm-linux-gnueabi=CROSS_COMPILER_TOOLCHAIN # gcc and binutils for Arm
 ```
