@@ -25,5 +25,5 @@ gcc=''      # Host compiler
 bison=''    # Parser generator
 flex=''     # Scanner generator
 swig=''     # Plumbing for connecting high-level languages to C
-arm-linux-gnueabi=CROSS_COMPILER_TOOLCHAIN # gcc and binutils for Arm
+arm-linux-gnueabi=CROSS_COMPILE # gcc and binutils for Arm
 ```

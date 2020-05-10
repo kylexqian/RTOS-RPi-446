@@ -11,6 +11,8 @@ if isfile("local_config"):
         for line in makefile:
             line = line.strip()
             if '=' in line:
+                if line.startswith("export"):
+                    line = line[len("export"):]
                 key, val = line.split('=')
                 make_vars[key.strip()] = val.strip()
 
