@@ -24,4 +24,5 @@ kyu image it downloads.
 gcc="Host compiler"
 bison="Parser generator"
 flex="Scanner generator"
+swig="Plumbing for connecting high-level languages to C"
 ```
