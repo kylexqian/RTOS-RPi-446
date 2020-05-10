@@ -1,3 +1,6 @@
 [submodule "rtos_lib"]
 	path = rtos_lib
 	url = https://git.sr.ht/~roselandgoose/kyu
+[submodule "boot"]
+	path = boot
+	url = https://git.sr.ht/~roselandgoose/u-boot_orange-pi-pc
