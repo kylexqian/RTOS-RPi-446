@@ -21,5 +21,5 @@ kyu image it downloads.
 
 ## Dependencies
 ```ini
-
+gcc="Host compiler"
 ```

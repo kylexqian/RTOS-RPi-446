@@ -1,4 +1,5 @@
 from sys import exit
+from shutil import which
 
 dependencies = {}
 
@@ -24,8 +25,11 @@ with open("README.md", "r") as readme:
         print("ERROR: README.md Dependencies section never ended?...")
         exit(-1)
 
+anyMissing = False
 for dep in dependencies:
-    print(dep, dependencies[dep])
+    if which(dep) is None:
+        anyMissing = True
+        print("Missing dependency " + dep + ". Install or set local_config")
+if anyMissing:
     exit(-1)
-
 exit(0)
