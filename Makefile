@@ -12,13 +12,18 @@ check_dependencies: ignore_local_config
 	python3 scripts/check_dependencies.py
 
 build_u-boot: submodules
-	. scripts/build_u-boot.sh
-
+	# Configure for OrangePi using Kbuild
+	#ToDo: Setup CROSS_COMPILER env var
+	cd boot && \
+	$(MAKE) distclean && \
+	$(MAKE) orangepi_pc_defconfig && \
+	$(MAKE) all
+	
 setup: check_dependencies build_u-boot
 	cd rtos_lib
 	. config orange_pi
 	# ToDo: setup tftp location
 
 build:
-	cd rtos_lib
-	make -j
+	cd rtos_lib && $(MAKE)
+
