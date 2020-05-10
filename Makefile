@@ -1,7 +1,15 @@
-check_dependencies:
+load_config:
+	source local_config.sh
+
+submodules:
+	@echo "Downloading sources. This may take a while..."
+	git submodule init
+	git submodule update
+
+check_dependencies: load_config
 	python3 scripts/check_dependencies.py
 
-build_u-boot:
+build_u-boot: submodules
 	. scripts/build_u-boot.sh
 
 setup: check_dependencies build_u-boot
