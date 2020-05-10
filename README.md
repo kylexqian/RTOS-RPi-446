@@ -23,4 +23,5 @@ kyu image it downloads.
 ```ini
 gcc="Host compiler"
 bison="Parser generator"
+flex="Scanner generator"
 ```
