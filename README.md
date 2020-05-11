@@ -26,4 +26,5 @@ bison=''    # Parser generator
 flex=''     # Scanner generator
 swig=''     # Plumbing for connecting high-level languages to C
 arm-linux-gnueabi=CROSS_COMPILE # gcc and binutils for Arm
+ruby=''     # Another scripting language, used by kyu dev for config
 ```

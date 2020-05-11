@@ -20,8 +20,8 @@ build_u-boot: submodules
 	$(MAKE) all
 	
 setup: check_dependencies build_u-boot
-	cd rtos_lib
-	. config orange_pi
+	cd rtos_lib && \
+	./config orange_pi
 	# ToDo: setup tftp location
 
 build:
