@@ -7,7 +7,7 @@ submodules:
 	@echo "Downloading sources. This may take a while on first run..."
 	git submodule init
 	git submodule update
-	git submodule foreach "git submodule update --rebase --remote $$sm_path"
+	git submodule update --rebase --remote `git submodule status | awk '{ print $$2 }'`
 	@echo "Sources downloaded!"
 
 check_dependencies: ignore_local_config

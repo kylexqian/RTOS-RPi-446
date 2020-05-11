@@ -30,6 +30,7 @@ kyu image it downloads.
 #                           : abstract one.
 #           COMMENT         : The role or reason for the dependency.
 #
+awk=''      # Standard UNIX tool, used in submodule maintenance scripts
 gcc=''      # Host compiler
 bison=''    # Parser generator
 flex=''     # Scanner generator
