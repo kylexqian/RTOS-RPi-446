@@ -7,6 +7,7 @@ submodules:
 	@echo "Downloading sources. This may take a while on first run..."
 	git submodule init
 	git submodule update
+	git submodule foreach "git submodule update --rebase --remote $$sm_path"
 	@echo "Sources downloaded!"
 
 check_dependencies: ignore_local_config
@@ -28,6 +29,6 @@ setup: check_dependencies build_u-boot
 	# ToDo: setup tftp location
 	@echo "Setup complete!"
 
-build:
+build: submodules
 	cd rtos_lib && $(MAKE)
 
