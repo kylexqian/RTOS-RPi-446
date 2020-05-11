@@ -31,6 +31,7 @@ kyu image it downloads.
 #           COMMENT         : The role or reason for the dependency.
 #
 awk=''      # Standard UNIX tool, used in submodule maintenance scripts
+sed=''      # Standard UNIX tool, used in bridging uboot and kyu makevars
 gcc=''      # Host compiler
 bison=''    # Parser generator
 flex=''     # Scanner generator
