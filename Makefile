@@ -4,12 +4,14 @@ ignore_local_config:
 include local_config
 
 submodules:
-	@echo "Downloading sources. This may take a while..."
+	@echo "Downloading sources. This may take a while on first run..."
 	git submodule init
 	git submodule update
+	@echo "Sources downloaded!"
 
 check_dependencies: ignore_local_config
 	python3 scripts/check_dependencies.py
+	@echo "All dependencies met!"
 
 build_u-boot: submodules
 	# Configure for OrangePi using Kbuild
@@ -18,11 +20,13 @@ build_u-boot: submodules
 	$(MAKE) distclean && \
 	$(MAKE) orangepi_pc_defconfig && \
 	$(MAKE) all
+	@echo "U-Boot built!"
 	
 setup: check_dependencies build_u-boot
 	cd rtos_lib && \
 	./config orange_pi
 	# ToDo: setup tftp location
+	@echo "Setup complete!"
 
 build:
 	cd rtos_lib && $(MAKE)
