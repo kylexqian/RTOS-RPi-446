@@ -21,10 +21,24 @@ kyu image it downloads.
 
 ## Dependencies
 ```ini
+# This list is the single point of authority for project dependencies
+# Formatted: DEPENDENCY=MAKE_VARIABLE # COMMENT
+#           DEPENDENCY      : The actuall command that must be installed 
+#                           : or the name of an abstract dependency. 
+#           MAKE_VARIABLE   : The Makefile variable that must be exported 
+#                           : from local_config if the DEPENDENCY is an 
+#                           : abstract one.
+#           COMMENT         : The role or reason for the dependency.
+#
 gcc=''      # Host compiler
 bison=''    # Parser generator
 flex=''     # Scanner generator
 swig=''     # Plumbing for connecting high-level languages to C
-arm-linux-gnueabi=CROSS_COMPILE # gcc and binutils for Arm
+an-arm-cross-compiler=CROSS_COMPILE # gcc and binutils for Arm
+                                    # CROSS_COMPILE is the prefix string
+                                    # for example:
+                                    #   "arm-linux-gnueabi-gcc"
+                                    #   -> "arm-linux-gnueabi-"
 ruby=''     # Another scripting language, used by kyu dev for config
+            # make sure it's installed or symlinked into /bin/ruby
 ```
