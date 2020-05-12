@@ -100,9 +100,9 @@ should report an ip address with "DHCP client bound to ...". It will
 also report that `serverip` is not set, but that's ok for now. As long 
 as we have an ip address from DHCP, we're in good shape.
 
-Now we need to configure u-boot to fetch our image. Tell u-boot the ip 
-address of your TFTP server (recorded in the makefile!) with (for 
-example):
+Now we need to configure u-boot to fetch the image (that we'll compile 
+next). Tell u-boot the ip address of your TFTP server (recorded in the 
+makefile!) with (for example):
 
 ```
 setenv serverip 192.xyz.zbc.def
