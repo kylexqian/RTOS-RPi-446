@@ -138,6 +138,11 @@ all set! From the main repo directory, run `make build`. Once that's
 done, and if it all went well, reconnect to the Pi and run 
 `run boot_kyu` in u-boot, or simply power cycle it. Hello Kyu!
 
+## Kyu
+You can type `help` to see a list of the preinstalled shell functions.
+Run `k 0` to do regression tests and confirm that all the basic 
+functionality is working.
+
 ## Dependencies
 ```ini
 # This list is the single point of authority for project dependencies
