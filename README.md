@@ -38,7 +38,7 @@ broadcast addresses. When you find it, record it to `TFTP_IP`.
 
 ## SD Card
 Insert your sd card and identify it (here assumed /dev/sdb).
-Whipe the boot sector, partition table (primary), and current filesystem
+Wipe the boot sector, partition table (primary), and current filesystem
 of your sd card with (for example)
 
 ```sh
@@ -60,10 +60,10 @@ sudo sfdisk /dev/sdb < sd_card_layout.sfdisk
 
 After the device has been partitioned (using `sfdisk` or similar), the 
 filesystem must be created. If you used a GUI tool, this is probably 
-already done. For the command line (assuming `/dev/sdb`:
+already done. For the command line (assuming `/dev/sdb`):
 
 ```sh
-sudo mkfs.fat -F32 /dev/sdb
+sudo mkfs.fat -F32 /dev/sdb1
 ```
 
 ## Bootloader
