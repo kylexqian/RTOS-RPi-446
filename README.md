@@ -75,7 +75,7 @@ in the `boot` subdirectory. After `cd`'ing into `boot`, run (assuming
 `/dev/sdb`) to write the bootloader to the sd_card:
 
 ```sh
-sudo sudo dd if=u-boot-sunxi-with-spl.bin of=/dev/sdb bs=1024 seek=8
+sudo dd if=u-boot-sunxi-with-spl.bin of=/dev/sdb bs=1024 seek=8
 ```
 
 Now insert the card into the Pi and connect the serial device. Look for 
