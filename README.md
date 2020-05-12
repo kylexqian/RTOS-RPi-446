@@ -86,6 +86,9 @@ found the serial device, connect to it with, for example:
 picocom -b 115200 /dev/ttyUSB0
 ```
 
+You may need to use `sudo` if your user does not have permission to 
+access the device.
+
 When you supply power to the Pi, the console should indicate that u-boot 
 is trying stuff. It may get caught initializing hardware a few times on 
 the first boot. Just power cycle the Pi and keep trying. Wait for it to 
