@@ -51,7 +51,11 @@ for dep in dependencies:
         continue
     else:
         anyMissing = True
-        print("Missing dependency "+dep+". Install or set local_config")
+        print("Missing dependency "+dep, end='. ')
+        if len(dependencies[dep][0]) > 0:
+            print("Record installation in local_config.")
+        else:
+            print("Install it from your package manager.")
 if anyMissing:
     exit(-1)
 exit(0)
