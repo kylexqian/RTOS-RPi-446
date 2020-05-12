@@ -79,15 +79,15 @@ sudo dd if=u-boot-sunxi-with-spl.bin of=/dev/sdb bs=1024 seek=8
 ```
 
 Now insert the card into the Pi and connect the serial device. Look for 
-the device in `/dev/`. On Linux it is often `/dev/ttyUSB0`. When you've 
-found the serial device, connect to it with, for example:
+the device in `/dev/`. On Linux it is often `/dev/ttyUSB0`. You may need 
+to use `sudo` to connect to it, but preferably not. Connect with, for 
+example:
 
 ```sh
 picocom -b 115200 /dev/ttyUSB0
 ```
 
-You may need to use `sudo` if your user does not have permission to 
-access the device.
+
 
 When you supply power to the Pi, the console should indicate that u-boot 
 is trying stuff. It may get caught initializing hardware a few times on 
