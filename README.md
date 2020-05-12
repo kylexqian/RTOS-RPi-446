@@ -122,8 +122,8 @@ setenv bootcmd "run boot_kyu"
 saveenv
 ```
 
-Hopefully all of that configuraton get's written to the FAT and we can 
-move on to the actual OS!
+Hopefully all of that configuraton is successfully written to the FAT 
+and we can move on to the actual OS!
 
 You may also consider assigning a static ip to both your host computer 
 and the Pi. You can get the Pi's MAC address from the u-boot shell 
