@@ -42,11 +42,11 @@ an-arm-cross-compiler=CROSS_COMPILE # Install a distribution of gcc and
                                     #
 ruby=''     # Another scripting language, used by kyu dev for config
             # make sure it's installed or symlinked into /bin/ruby
-a-TFTP-server=TFTP_DIR  # Need to serve the kyu boot image over TFTP and 
-                        # tell the build tools where to put it.
-a-local-ip=TFTP_IP      # Your local ipv4 address. See above.
 picocom=''              # A console for communicating with serial
                         # devices.
+a-TFTP-server=TFTP_DIR  # Need to serve the kyu boot image over TFTP and 
+                        # tell the build tools where to put it.
+a-local-ip=TFTP_IP      # Your local ipv4 address. See below.
 ```
 
 ## TFTP

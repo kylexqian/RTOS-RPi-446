@@ -29,8 +29,12 @@ with open("README.md", "r") as readme:
         if ini_line == "```\n":
             break
         if "#" in ini_line:
-            ini_line = ini_line.split('#')[0]
+            ini_line_only = ini_line.split('#')[0]
             comment = '#'.join(ini_line.split('#')[1:])
+            comment = comment.strip()
+            ini_line = ini_line_only
+        else:
+            comment = ''
         ini_line = ini_line.strip()
         if len(ini_line) == 0:
             # Ignore blank lines
@@ -58,6 +62,7 @@ for dep in dependencies:
             print("Record installation in local_config.")
         else:
             print("Install it from your package manager.")
+        print(" Reason: "+dependencies[dep][1])
 if anyMissing:
     exit(-1)
 exit(0)
