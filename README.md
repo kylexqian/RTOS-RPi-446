@@ -14,6 +14,41 @@ server. These abstract dependencies require you to export some makefile
 variables from local_config. See the comment in the dependency list 
 below for how to determine the `CROSS_COMPILE` variable.
 
+## Dependencies
+```ini
+# This list is the single point of authority for project dependencies
+# Formatted: DEPENDENCY=MAKE_VARIABLE # COMMENT
+#           DEPENDENCY      : The actuall command that must be installed 
+#                           : or the name of an abstract dependency. 
+#           MAKE_VARIABLE   : The Makefile variable that must be
+#                           : exported from local_config if the 
+#                           : DEPENDENCY is abstract.
+#           COMMENT         : The role or reason for the dependency.
+#
+awk=''      # Standard UNIX tool, used to maintain submodules
+sed=''      # Standard UNIX tool, used to bridge uboot and kyu makevars
+gcc=''      # Host compiler
+bison=''    # Parser generator
+flex=''     # Scanner generator
+swig=''     # Plumbing for connecting high-level languages to C
+an-arm-cross-compiler=CROSS_COMPILE # Install a distribution of gcc and 
+                                    # binutils for Arm. Record the
+                                    # prefix of whatever you install 
+                                    # in the CROSS_COMPILE variable.
+                                    #
+                                    # For example:
+                                    #   "arm-linux-gnueabi-gcc"
+                                    #   -> "arm-linux-gnueabi-"
+                                    #
+ruby=''     # Another scripting language, used by kyu dev for config
+            # make sure it's installed or symlinked into /bin/ruby
+a-TFTP-server=TFTP_DIR  # Need to serve the kyu boot image over TFTP and 
+                        # tell the build tools where to put it.
+a-local-ip=TFTP_IP      # Your local ipv4 address. See above.
+picocom=''              # A console for communicating with serial
+                        # devices.
+```
+
 ## TFTP
 To configure a TFTP server on recent versions of MacOS, run:
 
@@ -87,8 +122,6 @@ example:
 picocom -b 115200 /dev/ttyUSB0
 ```
 
-
-
 When you supply power to the Pi, the console should indicate that u-boot 
 is trying stuff. It may get caught initializing hardware a few times on 
 the first boot. Just power cycle the Pi and keep trying. Wait for it to 
@@ -142,38 +175,3 @@ done, and if it all went well, reconnect to the Pi and run
 You can type `help` to see a list of the preinstalled shell functions.
 Run `k 0` to do regression tests and confirm that all the basic 
 functionality is working.
-
-## Dependencies
-```ini
-# This list is the single point of authority for project dependencies
-# Formatted: DEPENDENCY=MAKE_VARIABLE # COMMENT
-#           DEPENDENCY      : The actuall command that must be installed 
-#                           : or the name of an abstract dependency. 
-#           MAKE_VARIABLE   : The Makefile variable that must be
-#                           : exported from local_config if the 
-#                           : DEPENDENCY is abstract.
-#           COMMENT         : The role or reason for the dependency.
-#
-awk=''      # Standard UNIX tool, used to maintain submodules
-sed=''      # Standard UNIX tool, used to bridge uboot and kyu makevars
-gcc=''      # Host compiler
-bison=''    # Parser generator
-flex=''     # Scanner generator
-swig=''     # Plumbing for connecting high-level languages to C
-an-arm-cross-compiler=CROSS_COMPILE # Install a distribution of gcc and 
-                                    # binutils for Arm. Record the
-                                    # prefix of whatever you install 
-                                    # in the CROSS_COMPILE variable.
-                                    #
-                                    # For example:
-                                    #   "arm-linux-gnueabi-gcc"
-                                    #   -> "arm-linux-gnueabi-"
-                                    #
-ruby=''     # Another scripting language, used by kyu dev for config
-            # make sure it's installed or symlinked into /bin/ruby
-a-TFTP-server=TFTP_DIR  # Need to serve the kyu boot image over TFTP and 
-                        # tell the build tools where to put it.
-a-local-ip=TFTP_IP      # Your local ipv4 address. See above.
-picocom=''              # A console for communicating with serial
-                        # devices.
-```
