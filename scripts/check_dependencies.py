@@ -36,6 +36,8 @@ with open("README.md", "r") as readme:
             # Ignore blank lines
             continue
         dependency, make_var = ini_line.split('=')
+        dependency = dependency.strip()
+        make_var = make_var.strip()
         dependencies[dependency] = (make_var, comment)
     else:
         print("ERROR: README.md Dependencies section never ended?...")
@@ -52,7 +54,7 @@ for dep in dependencies:
     else:
         anyMissing = True
         print("Missing dependency "+dep, end='. ')
-        if len(dependencies[dep][0]) > 0:
+        if dependencies[dep][0] == '':
             print("Record installation in local_config.")
         else:
             print("Install it from your package manager.")
