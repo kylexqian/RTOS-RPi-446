@@ -65,7 +65,7 @@ configure TFTP to serve from, must be recorded in `local_config` as the
 You will also need to determine your local ipv4 address. This is not 
 your public ipv4 address (which probably really belongs to your router 
 who relays packets on your behalf), your device's ipv6 address, or your 
-MAC address. It will probably have the form `192.168.000.xyz` or 
+MAC address. It will probably have the form `192.168.0.xyz` or 
 similar. Run `ifconfig` or `ip address show` and look for close 
 addresses there. It will probably be listed near `inet` or `ether`.
 You can also probably ignore loopback devices, netmasks, and 
