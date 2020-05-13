@@ -8,6 +8,7 @@ submodules:
 	git submodule init
 	git submodule update
 	git submodule update --rebase --remote `git submodule status | awk '{ print $$2 }'`
+	cd rtos_lib && git update-index --assume-unchanged user_entry/user.c
 	@echo "Sources downloaded!"
 
 check_dependencies: ignore_local_config
