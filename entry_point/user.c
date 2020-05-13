@@ -1,37 +1,89 @@
 #include <kyu.h>
 #include <thread.h>
+#include "morse.h"
 
 static struct thread *user_thread;
 static int count;
 
-static void
-ticker ( void )
-{
-	++count;
-	if ( count > 49 ) {
-	    thr_unblock ( user_thread );
-	    count = 0;
-	}
+#define true 1
+#define false 0
+
+void
+h() {
+	printf("h ");
+	dot();
+	dot();
+	dot();
+	dot();
+	end_char();
+}
+
+void
+e() {
+	printf("e ");
+	dot();
+	end_char();
+}
+
+void
+l() {
+	printf("l ");
+	dot();
+	dash();
+	dot();
+	dot();
+	end_char();
+}
+
+void
+o() {
+	printf("o ");
+	dash();
+	dash();
+	dash();
+	end_char();
+}
+
+void
+w() {
+	printf("w ");
+	dot();
+	dash();
+	dash();
+	end_char();
+}
+
+void
+r() {
+	printf("r ");
+	dot();
+	dash();
+	dot();
+	end_char();
+}
+
+void
+d() {
+	printf("d ");
+	dash();
+	dot();
+	dot();
+	end_char();
 }
 
 void
 user_init ( int xx )
 {
-	int led = 0;
-
-	count = 0;
-	user_thread = thr_self ();
 	gpio_led_init ();
-	timer_hookup ( ticker );
+	while (true) {
+		h();e();l();l();o();
+		printf("  ");
+		end_word();
 
-	for ( ;; ) {
-	    thr_block ( WAIT );
-	    if (led) {
-	    	status_on();
-	    }
-	    else {
-		status_off();
-	    }
-	    led = (led+1) % 2;
+		w();o();r();l();d();
+		printf("\n");
+		end_word();
+
+		end_word();
 	}
 }
