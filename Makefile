@@ -16,8 +16,6 @@ check_dependencies: ignore_local_config
 	@echo "All dependencies met!"
 
 build_u-boot: submodules
-	# Configure for OrangePi using Kbuild
-	#ToDo: Setup CROSS_COMPILER env var
 	cd boot && \
 	$(MAKE) distclean && \
 	$(MAKE) orangepi_pc_defconfig && \
@@ -27,7 +25,6 @@ build_u-boot: submodules
 setup: check_dependencies build_u-boot
 	cd rtos_lib && \
 	./config orange_pi
-	# ToDo: setup tftp location
 	@echo "Setup complete!"
 
 build: submodules
