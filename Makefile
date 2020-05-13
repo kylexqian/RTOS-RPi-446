@@ -27,6 +27,13 @@ setup: check_dependencies build_u-boot
 	./config orange_pi
 	@echo "Setup complete!"
 
-build: submodules
+clean:
+	cd entry_point && rm *.o
+
+deep_clean: clean
+	cd boot && $(MAKE) clean
+	cd rtos_lib && $(MAKE) clean
+
+build: submodules clean
 	cd rtos_lib && $(MAKE)
 	@echo "Compilation and deploy complete!"
