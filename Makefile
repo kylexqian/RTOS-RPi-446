@@ -31,4 +31,4 @@ setup: check_dependencies build_u-boot
 
 build: submodules
 	cd rtos_lib && $(MAKE)
-
+	@echo "Compilation and deploy complete!"
