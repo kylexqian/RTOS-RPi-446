@@ -28,7 +28,7 @@ setup: check_dependencies build_u-boot
 	@echo "Setup complete!"
 
 clean:
-	cd entry_point && rm *.o
+	-rm entry_point/*.o
 
 deep_clean: clean
 	cd boot && $(MAKE) clean
