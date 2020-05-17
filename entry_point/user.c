@@ -5,9 +5,6 @@
 static struct thread *user_thread;
 static int count;
 
-#define true 1
-#define false 0
-
 void user_init(int xx) {
     printf("*********************\nUser Entry Point\n\n");
 
