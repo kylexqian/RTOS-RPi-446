@@ -10,15 +10,29 @@ void user_init(int xx) {
 
     Frame* frame = (Frame*) malloc(sizeof(Frame));
     printFrame(frame);
+    asciiRenderFrame(frame);
 
     frame->pixels[1][2].name = Blue;
     frame->pixels[0][3].name = Red;
     frame->pixels[1][1].name = Green;
     frame->pixels[0][0].name = Cyan;
     printFrame(frame);
-   
-    gpio_led_init ();
-    while (true) {
-        ;
+    asciiRenderFrame(frame);
+
+    #define MAXB    64
+    char buf[MAXB];
+    for ( ;; ) {
+        printf ( "R to Reboot: " );
+        getline ( buf, MAXB );
+        if ( ! buf[0] )
+            continue;
+
+        if ( buf[0] == 'R' ) {
+            /* Reboot the machine */
+            printf ( "Rebooting\n" );
+            reset_cpu ();
+        }
     }
 }
+ 
+

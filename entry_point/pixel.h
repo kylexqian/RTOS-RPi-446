@@ -9,7 +9,6 @@
  * Preliminary Black/White display can simply read (C > 0)
  * Full 3-bit color display can ignore LSB in RGB field mask
 \*/
-
 typedef enum ColorName {
     Black   = 0b0000, // ___ _
     White   = 0b1111, // RGB x
@@ -20,11 +19,12 @@ typedef enum ColorName {
     Magenta = 0b1011, // R_B x
     Cyan    = 0b0111, // _GB x
 } ColorName;
+#define MAX_LENGTH_OF_COLOR_NAME sizeof("Magenta")
 typedef struct ColorBits {
-    unsigned int NOTBLACK:  1;
-    unsigned int BLUE    :  1;
-    unsigned int GREEN   :  1;
-    unsigned int RED     :  1;
+    unsigned int NOTBLACK : 1;
+    unsigned int BLUE     : 1;
+    unsigned int GREEN    : 1;
+    unsigned int RED      : 1;
 } ColorBits;
 typedef union Color {
     ColorName name;
@@ -32,7 +32,11 @@ typedef union Color {
 } Color;
 
 void
-printColor(Color);
+printColorName(Color);
+void
+printColorRGB(Color);
+
+
 
 #define FRAME_ROWS    2
 #define FRAME_COLUMNS 4
@@ -42,3 +46,38 @@ typedef struct Frame {
 
 void
 printFrame(Frame*);
+
+#define LONG_HYPHEN_BAR \
+"----------------------------------------------------------------------\
+-----------------------------------------------------------------------\
+-----------------------------------------------------------------------\
+-----------------------------------------------------------------------"
+void
+asciiRenderFrame(Frame*);
+
+
+
+typedef struct Buffer {
+    Color           pixels[FRAME_ROWS][FRAME_COLUMNS];
+    unsigned int    rows;
+    unsigned int    columns;
+    unsigned char   layer;
+} Buffer;
+
+typedef struct Coordinate {
+    unsigned int row;
+    unsigned int column;
+} Coordinate;
+
+#define colorAt(Coordinate, FramePtr) \
+    (FramePtr->pixels[Coordinate.row][Coordinate.column])
+
+Frame*
+makeFrame(Buffer*, Coordinate);
+
+Frame*
+compositeOnto(Buffer*, Coordinate, Frame*);
+
+Frame*
+compositeLayers(Buffer*[], Coordinate[], unsigned int, Frame*);
+
