@@ -1,4 +1,7 @@
 #pragma once
+
+#define NEW(type) (type*) malloc(sizeof(type))
+
 /*\
  * 3-bit color with redundant Black/White bit (ones-place bit)
  * 
