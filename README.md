@@ -5,7 +5,7 @@ system library and producing the graphics on the cpu directly over
 serial.
 
 # Setup
-You'll need `make`, `sh`, `python3`, an sd card, an OrangePi PC, and a 
+You'll need `make`, `sh`, `python3-dev`, an sd card, an OrangePi PC, and a 
 serial-to-usb device to get started. Run `make check_dependencies` to
 find out which of the below dependencies you don't yet have.
 
