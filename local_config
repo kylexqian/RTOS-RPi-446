@@ -1,0 +1,4 @@
+# This is where we will record where dependencies are met locally
+
+# For example:
+# export CROSS_COMPILE = arm-linux-gnueabi-
