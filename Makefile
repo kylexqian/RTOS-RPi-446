@@ -3,7 +3,7 @@ ignore_local_config:
 
 include local_config
 
-submodules:
+submodules_init:
 	@echo "Downloading sources. This may take a while on first run..."
 	git submodule init
 	git submodule update
@@ -11,11 +11,19 @@ submodules:
 	cd rtos_lib && git update-index --assume-unchanged user_entry/user.c
 	@echo "Sources downloaded!"
 
+submodules_update:
+	git submodule update --rebase --remote `git submodule status | awk '{ print $$2 }'`
+	@echo "Sources updated!"
+	
+rtos_dev:
+	cd rtos_lib/ && git pull --rebase origin working
+	@echo "RTOS source updated!"
+
 check_dependencies: ignore_local_config
 	python3 scripts/check_dependencies.py
 	@echo "All dependencies met!"
 
-build_u-boot: submodules
+build_u-boot: submodules_init submodules_update
 	cd boot && \
 	$(MAKE) distclean && \
 	$(MAKE) orangepi_pc_defconfig && \
@@ -34,6 +42,11 @@ deep_clean: clean
 	cd boot && $(MAKE) clean
 	cd rtos_lib && $(MAKE) clean
 
-build: submodules clean
+_build:
 	cd rtos_lib && $(MAKE)
 	@echo "Compilation and deploy complete!"
+
+build_dev: rtos_dev clean _build
+
+build: submodules_update clean _build
+
