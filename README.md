@@ -175,3 +175,20 @@ done, and if it all went well, reconnect to the Pi and run
 You can type `help` to see a list of the preinstalled shell functions.
 Run `k 0` to do regression tests and confirm that all the basic 
 functionality is working.
+
+# Working with the Code
+I've set up the repo structure so Kyu will easily compile arbitrary code 
+from the `entry_point` directory and jump to the function 
+`void user_init(int)`, wherever you define that. To start working on the 
+entry point code for our project, remove the `user_entry` directory from 
+inside `rtos_lib` and replace it with a symbolic link of the same name, 
+to the `user_entry` directory. For example:
+
+```sh
+cd rtos_lib;
+rm -r rtos_lib;
+ln -s ../entry_point user_entry
+```
+
+Now runing `make build` or `make build_dev` will compile our retro 
+graphics user code! Have fun :D
